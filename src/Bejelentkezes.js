@@ -1,7 +1,25 @@
 import {useState} from 'react';
+import {login} from './AuthService';
+import { useNavigate } from 'react-router-dom';
+
 
 export function Bejelentkezes() {
 	const [isLoginPending, setLoginPending] = useState(false);
+	const navigate = useNavigate();
+
+	function loginFormSubmit(e) {
+		e.preventDefault();
+		setLoginPending(true);
+		login(e.target.elements.email.value, e.target.elements.password.value)
+			.then(() => {
+				setLoginPending(false);
+				navigate("/")
+			})
+			.catch(err => { 
+				alert("Helytelen bejelentkezési adatok, kérjük próbáld újra!");
+				setLoginPending(false);
+			})
+	}
 
 	if(isLoginPending) {
 		return (
@@ -18,7 +36,7 @@ export function Bejelentkezes() {
 					<h3>Bejelentkezés</h3>
 				</div>
 				<div className="card-body">
-					<form>
+					<form onSubmit={loginFormSubmit}>
 						<div className="input-group form-group">
 							<input type="email" name="email" className="form-control" placeholder="Email" />
 						</div>
