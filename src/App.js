@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {Bejelentkezes} from './Bejelentkezes';
 import {SzallasLista} from './SzallasLista';
 import {SzallasSingle} from './SzallasSingle';
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default function App() {
   return (
