@@ -13,7 +13,7 @@ export function Bejelentkezes() {
 		login(e.target.elements.email.value, e.target.elements.password.value)
 			.then(() => {
 				setLoginPending(false);
-				navigate("/")
+				navigate("/osszes-szallas")
 			})
 			.catch(err => { 
 				alert("Helytelen bejelentkezési adatok, kérjük próbáld újra!");
